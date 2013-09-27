@@ -27,7 +27,7 @@ $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
+    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
 # This device is hdpi.  However the platform doesn't
 # currently contain all of the bitmaps at hdpi density so
@@ -38,7 +38,6 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 # Configuration scripts
 PRODUCT_COPY_FILES += \
-   $(LOCAL_PATH)/config/init.st-ericsson.device.rc:root/init.st-ericsson.device.rc \
    device/sony/montblanc-common/prebuilt/logo-480x854.rle:root/logo.rle
 
 # Configuration scripts
@@ -76,10 +75,13 @@ PRODUCT_COPY_FILES += \
 
 # Misc configuration files
 PRODUCT_COPY_FILES += \
+   $(LOCAL_PATH)/config/manuf_id.cfg:system/etc/AT/manuf_id.cfg \
+   $(LOCAL_PATH)/config/model_id.cfg:system/etc/AT/model_id.cfg \
+   $(LOCAL_PATH)/config/system_id.cfg:system/etc/AT/system_id.cfg \
    $(LOCAL_PATH)/config/cflashlib.cfg:system/etc/cflashlib.cfg \
    $(LOCAL_PATH)/config/flashled_param_config.cfg:system/etc/flashled_param_config.cfg
 
-$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+$(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, vendor/sony/kumquat/kumquat-vendor.mk)
 
